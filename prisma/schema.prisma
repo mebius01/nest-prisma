@@ -12,21 +12,27 @@ datasource db {
 
 model genres {
   genre_id    Int           @id @default(autoincrement())
-  name        String
+  genre_name  String        @unique
   book_genres book_genres[]
+  createed_at DateTime      @default(now())
+  updated_at  DateTime      @updatedAt
 }
 
 model authors {
   author_id    Int            @id @default(autoincrement())
-  name         String
+  author_name  String         @unique
   book_authors book_authors[]
+  createed_at  DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
 }
 
 model books {
   book_id      Int            @id @default(autoincrement())
-  name         String
+  title        String
   book_authors book_authors[]
   book_genres  book_genres[]
+  createed_at  DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
 }
 
 model book_authors {

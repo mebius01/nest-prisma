@@ -1,26 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthorDto } from './dto/create-author.dto';
-import { UpdateAuthorDto } from './dto/update-author.dto';
+import { CreateAuthorDto, UpdateAuthorDto } from './authors.dto';
+import { AuthorsDal } from './authors.dal';
 
 @Injectable()
 export class AuthorsService {
-  create(createAuthorDto: CreateAuthorDto) {
-    return 'This action adds a new author';
+  constructor(private readonly dal: AuthorsDal) {}
+
+  async create(body: CreateAuthorDto) {
+    return await this.dal.create(body);
   }
 
-  findAll() {
-    return `This action returns all authors`;
+  async list() {
+    return await this.dal.list();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} author`;
+  async get(id: number) {
+    return await this.dal.get(id);
   }
 
-  update(id: number, updateAuthorDto: UpdateAuthorDto) {
-    return `This action updates a #${id} author`;
+  async update(id: number, body: UpdateAuthorDto) {
+    return await this.dal.update(id, body);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} author`;
+  async remove(id: number) {
+    return await this.dal.remove(id);
   }
 }
