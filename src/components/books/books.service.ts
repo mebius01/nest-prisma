@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
 import { PrismaService } from 'src/services/prisma/prisma.service';
+import { CreateBookDto, UpdateBookDto } from './books.dto';
 
 @Injectable()
 export class BooksService {
@@ -20,7 +19,7 @@ export class BooksService {
     }
   }
 
-  findOne(id: number) {
+  get(id: number) {
     return `This action returns a #${id} book`;
   }
 
