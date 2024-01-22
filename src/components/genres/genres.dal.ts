@@ -3,12 +3,12 @@ import { Prisma } from '@prisma/client';
 import { DBService } from 'src/db/db.service';
 
 @Injectable()
-export class BooksDal {
+export class GenresDal {
   constructor(private readonly db: DBService) {}
 
-  async create(payload: Prisma.booksCreateInput) {
+  async create(payload: Prisma.genresCreateInput) {
     try {
-      const data = await this.db.books.create({ data: payload });
+      const data = await this.db.genres.create({ data: payload });
       return data;
     } catch (error) {
       throw error;
@@ -17,7 +17,7 @@ export class BooksDal {
 
   async list() {
     try {
-      const data = await this.db.books.findMany();
+      const data = await this.db.genres.findMany();
       return data;
     } catch (error) {
       throw error;
@@ -26,8 +26,8 @@ export class BooksDal {
 
   async get(id: number) {
     try {
-      const data = await this.db.books.findUnique({
-        where: { book_id: id },
+      const data = await this.db.genres.findUnique({
+        where: { genre_id: id },
       });
       return data;
     } catch (error) {
@@ -35,10 +35,10 @@ export class BooksDal {
     }
   }
 
-  async update(id: number, payload: Prisma.booksUpdateInput) {
+  async update(id: number, payload: Prisma.genresUpdateInput) {
     try {
-      const data = await this.db.books.update({
-        where: { book_id: id },
+      const data = await this.db.genres.update({
+        where: { genre_id: id },
         data: payload,
       });
       return data;
@@ -49,8 +49,8 @@ export class BooksDal {
 
   async remove(id: number) {
     try {
-      const data = await this.db.authors.delete({
-        where: { author_id: id },
+      const data = await this.db.genres.delete({
+        where: { genre_id: id },
       });
       return data;
     } catch (error) {
