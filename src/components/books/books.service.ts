@@ -1,33 +1,33 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/services/prisma/prisma.service';
 import { CreateBookDto, UpdateBookDto } from './books.dto';
+import { BooksDal } from './books.dal';
 
 @Injectable()
 export class BooksService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly dal: BooksDal) {}
 
-  create(createBookDto: CreateBookDto) {
-    return 'This action adds a new book';
+  async create(body: CreateBookDto) {
+    //   const book = {
+    //     title: 'test',
+    //     book_genres: [1, 2],
+    //     book_authors: [1, 2],
+    //   };
+    return await this.dal.create(body);
   }
 
   async list() {
-    try {
-      const data = await this.prisma.books.findMany();
-      return data;
-    } catch (error) {
-      throw error;
-    }
+    return await this.dal.list();
   }
 
-  get(id: number) {
-    return `This action returns a #${id} book`;
+  async get(id: number) {
+    return await this.dal.get(id);
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
-    return `This action updates a #${id} book`;
+  async update(id: number, body: UpdateBookDto) {
+    return await this.dal.update(id, body);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  async remove(id: number) {
+    return await this.dal.remove(id);
   }
 }
