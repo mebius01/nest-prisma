@@ -8,7 +8,13 @@ export class BooksDal {
 
   async create(payload: Prisma.booksCreateInput) {
     try {
-      const data = await this.db.books.create({ data: payload });
+      const data = await this.db.books.create({
+        data: payload,
+        include: {
+          book_genres: true,
+          book_authors: true,
+        },
+      });
       return data;
     } catch (error) {
       throw error;
