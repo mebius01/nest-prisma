@@ -1,18 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookDto, UpdateBookDto } from './books.dto';
 import { BooksDal } from './books.dal';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class BooksService {
   constructor(private readonly dal: BooksDal) {}
 
   async create(body: CreateBookDto) {
-    //   const book = {
-    //     title: 'test',
-    //     book_genres: [1, 2],
-    //     book_authors: [1, 2],
-    //   };
-    return await this.dal.create(body);
+    const book: Prisma.booksCreateInput = {
+      title: body.title,
+      book_genres: {
+        create: body.genres.map((i) => ({ genre_id: i })), //[{ genre_id: 1 }],
+      },
+      book_authors: {
+        create: body.authors.map((i) => ({ author_id: i })),
+      },
+    };
+    return await this.dal.create(book);
   }
 
   async list() {
