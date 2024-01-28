@@ -10,6 +10,9 @@ export class BooksService {
   async create(body: CreateBookDto) {
     const book: Prisma.booksCreateInput = {
       title: body.title,
+      publishers: {
+        connect: { publisher_id: body.publisher },
+      },
       book_genres: {
         create: body.genres.map((i) => ({ genre_id: i })),
       },
