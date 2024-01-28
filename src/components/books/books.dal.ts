@@ -23,7 +23,22 @@ export class BooksDal {
 
   async list() {
     try {
-      const data = await this.db.books.findMany();
+      const data = await this.db.books.findMany({
+        include: {
+          book_authors: {
+            select: { authors: { select: { author_name: true } } },
+          },
+        },
+        // select: {
+        //   title: true,
+        //   book_authors: {
+        //     select: { authors: { select: { author_name: true } } },
+        //   },
+        //   book_genres: {
+        //     select: { genres: { select: { genre_name: true } } },
+        //   },
+        // },
+      });
       return data;
     } catch (error) {
       throw error;
@@ -33,6 +48,15 @@ export class BooksDal {
   async get(id: number) {
     try {
       const data = await this.db.books.findUnique({
+        select: {
+          title: true,
+          book_authors: {
+            select: { authors: { select: { author_name: true } } },
+          },
+          book_genres: {
+            select: { genres: { select: { genre_name: true } } },
+          },
+        },
         where: { book_id: id },
       });
       return data;

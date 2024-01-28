@@ -11,7 +11,7 @@ export class BooksService {
     const book: Prisma.booksCreateInput = {
       title: body.title,
       book_genres: {
-        create: body.genres.map((i) => ({ genre_id: i })), //[{ genre_id: 1 }],
+        create: body.genres.map((i) => ({ genre_id: i })),
       },
       book_authors: {
         create: body.authors.map((i) => ({ author_id: i })),
