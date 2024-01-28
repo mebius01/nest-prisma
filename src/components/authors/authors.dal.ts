@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DBService } from 'src/db/db.service';
+import { get, list } from './authors.sql';
 
 @Injectable()
 export class AuthorsDal {
@@ -17,7 +18,7 @@ export class AuthorsDal {
 
   async list() {
     try {
-      const data = await this.db.authors.findMany();
+      const data = await this.db.$queryRawUnsafe(list);
       return data;
     } catch (error) {
       throw error;
@@ -26,9 +27,7 @@ export class AuthorsDal {
 
   async get(id: number) {
     try {
-      const data = await this.db.authors.findUnique({
-        where: { author_id: id },
-      });
+      const data = await this.db.$queryRawUnsafe(get, id);
       return data;
     } catch (error) {
       throw error;
