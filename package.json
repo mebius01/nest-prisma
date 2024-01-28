@@ -17,10 +17,14 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
-  },
-  "prisma": {
-    "seed": "ts-node src/db/data/seed.ts"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prs:migrate": "npx prisma migrate dev",
+    "prs:generate": "npx prisma generate",
+    "prs:seed": "ts-node src/db/data/seed.ts",
+    "prs:studio": "npx prisma studio",
+    "dc:up": "docker-compose up -d",
+    "dc:down": "docker-compose down",
+    "dc:ps": "docker ps"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

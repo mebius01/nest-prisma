@@ -26,9 +26,17 @@ model authors {
   updated_at   DateTime       @updatedAt
 }
 
+model publishers {
+  publisher_id   Int     @id @default(autoincrement())
+  publisher_name String
+  books          books[]
+}
+
 model books {
   book_id      Int            @id @default(autoincrement())
   title        String
+  publishers   publishers     @relation(fields: [publisher_id], references: [publisher_id])
+  publisher_id Int
   book_authors book_authors[]
   book_genres  book_genres[]
   createed_at  DateTime       @default(now())
