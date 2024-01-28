@@ -29,15 +29,6 @@ export class BooksDal {
             select: { authors: { select: { author_name: true } } },
           },
         },
-        // select: {
-        //   title: true,
-        //   book_authors: {
-        //     select: { authors: { select: { author_name: true } } },
-        //   },
-        //   book_genres: {
-        //     select: { genres: { select: { genre_name: true } } },
-        //   },
-        // },
       });
       return data;
     } catch (error) {
@@ -51,10 +42,13 @@ export class BooksDal {
         select: {
           title: true,
           book_authors: {
-            select: { authors: { select: { author_name: true } } },
+            select: { authors: true },
           },
           book_genres: {
             select: { genres: { select: { genre_name: true } } },
+          },
+          publishers: {
+            select: { publisher_name: true },
           },
         },
         where: { book_id: id },

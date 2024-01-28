@@ -22,21 +22,26 @@ export const authors = [
   { author_id: 12, author_name: 'Alex Michaelides' },
 ];
 
+export const publishers = [
+  { publisher_id: 1, publisher_name: '21 Editore' },
+  { publisher_id: 2, publisher_name: 'Agora & Co.' },
+];
+
 export const books = [
-  { book_id: 1, title: 'Foundation' },
-  { book_id: 2, title: 'Solaris' },
-  { book_id: 3, title: 'Dune' },
-  { book_id: 4, title: 'The Moon is a Harsh Mistress' },
-  { book_id: 5, title: 'Flatiron Books The Dry' },
-  { book_id: 6, title: 'Bitter Lemon Press Havana Red' },
-  { book_id: 7, title: 'The Shining' },
-  { book_id: 8, title: 'Pet Sematary' },
-  { book_id: 9, title: 'Misery' },
-  { book_id: 10, title: 'The Hobbit and The Lord of the Rings' },
-  { book_id: 11, title: 'A Game of Thrones' },
-  { book_id: 12, title: 'The Book Thief' },
-  { book_id: 13, title: 'All the Light We Cannot See' },
-  { book_id: 14, title: 'The Silent Patient' },
+  { book_id: 1, title: 'Foundation', publisher_id: 1 },
+  { book_id: 2, title: 'Solaris', publisher_id: 1 },
+  { book_id: 3, title: 'Dune', publisher_id: 1 },
+  { book_id: 4, title: 'The Moon is a Harsh Mistress', publisher_id: 1 },
+  { book_id: 5, title: 'Flatiron Books The Dry', publisher_id: 1 },
+  { book_id: 6, title: 'Bitter Lemon Press Havana Red', publisher_id: 2 },
+  { book_id: 7, title: 'The Shining', publisher_id: 2 },
+  { book_id: 8, title: 'Pet Sematary', publisher_id: 2 },
+  { book_id: 9, title: 'Misery', publisher_id: 1 },
+  { book_id: 10, title: 'The Lord of the Rings', publisher_id: 1 },
+  { book_id: 11, title: 'A Game of Thrones', publisher_id: 2 },
+  { book_id: 12, title: 'The Book Thief', publisher_id: 1 },
+  { book_id: 13, title: 'All the Light We Cannot See', publisher_id: 1 },
+  { book_id: 14, title: 'The Silent Patient', publisher_id: 2 },
 ];
 
 export const book_authors = [
