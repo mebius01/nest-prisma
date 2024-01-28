@@ -1,4 +1,4 @@
-const genres = [
+export const genres = [
   { genre_id: 1, genre_name: 'Science fiction' },
   { genre_id: 2, genre_name: 'Mystery' },
   { genre_id: 3, genre_name: 'Horror' },
@@ -7,7 +7,7 @@ const genres = [
   { genre_id: 6, genre_name: 'Thriller' },
 ];
 
-const authors = [
+export const authors = [
   { author_id: 1, author_name: 'Isaac Asimov' },
   { author_id: 2, author_name: 'Stanislaw Lem' },
   { author_id: 3, author_name: 'Frank Herbert' },
@@ -22,7 +22,7 @@ const authors = [
   { author_id: 12, author_name: 'Alex Michaelides' },
 ];
 
-const books = [
+export const books = [
   { book_id: 1, title: 'Foundation' },
   { book_id: 2, title: 'Solaris' },
   { book_id: 3, title: 'Dune' },
@@ -39,7 +39,7 @@ const books = [
   { book_id: 14, title: 'The Silent Patient' },
 ];
 
-const book_authors = [
+export const book_authors = [
   { book_id: 1, author_id: 1 },
   { book_id: 2, author_id: 2 },
   { book_id: 3, author_id: 3 },
@@ -56,7 +56,7 @@ const book_authors = [
   { book_id: 14, author_id: 12 },
 ];
 
-const book_genres = [
+export const book_genres = [
   { book_id: 1, genre_id: 1 },
   { book_id: 2, genre_id: 1 },
   { book_id: 3, genre_id: 1 },

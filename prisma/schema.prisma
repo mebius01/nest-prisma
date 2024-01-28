@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -36,18 +36,18 @@ model books {
 }
 
 model book_authors {
-  books     books   @relation(fields: [book_id], references: [book_id])
+  books     books   @relation(fields: [book_id], references: [book_id], onDelete: Cascade)
   book_id   Int
-  authors   authors @relation(fields: [author_id], references: [author_id])
+  authors   authors @relation(fields: [author_id], references: [author_id], onDelete: Cascade)
   author_id Int
 
   @@id([book_id, author_id])
 }
 
 model book_genres {
-  books    books  @relation(fields: [book_id], references: [book_id])
+  books    books  @relation(fields: [book_id], references: [book_id], onDelete: Cascade)
   book_id  Int
-  genres   genres @relation(fields: [genre_id], references: [genre_id])
+  genres   genres @relation(fields: [genre_id], references: [genre_id], onDelete: Cascade)
   genre_id Int
 
   @@id([book_id, genre_id])
